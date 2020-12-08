@@ -6,7 +6,7 @@
 /*   By: bmarilli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 13:38:02 by bmarilli          #+#    #+#             */
-/*   Updated: 2020/11/10 15:03:47 by bmarilli         ###   ########.fr       */
+/*   Updated: 2020/12/08 06:51:49 by bmarilli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,25 +21,25 @@
 ** -1: an error occurred
 */
 
-static int		ft_find_zero(char **x, char **line)
+static int		ft_find_zero(char **last, char **line)
 {
-	if (ft_strchr(*x, '\0'))
+	if (ft_strchr(*last, '\0'))
 	{
-		*line = ft_strdup(*x);
-		free(*x);
-		*x = NULL;
+		*line = ft_strdup(*last);
+		free(*last);
+		*last = NULL;
 	}
 	return (0);
 }
 
-static int		ft_nbytes_error(ssize_t *nbytes, char **x)
+static int		ft_nbytes_error(ssize_t *nbytes, char **last)
 {
 	if (*nbytes < 0)
 	{
-		if (*x != NULL)
+		if (*last != NULL)
 		{
-			free(*x);
-			*x = NULL;
+			free(*last);
+			*last = NULL;
 		}
 		return (1);
 	}
